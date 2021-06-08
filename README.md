@@ -1,9 +1,9 @@
 # Android Debug Bridge (adb)
 
-Other sites that I maintain:
+ Other sites that I maintain:
 
-[Gentoo Wiki - ADB](https://wiki.gentoo.org/wiki/Android/adb)
-<br>[Stackoverflow - Bluetooth](https://stackoverflow.com/a/55064471)    
+* [Gentoo Wiki - ADB](https://wiki.gentoo.org/wiki/Android/adb)
+* [Stackoverflow - Bluetooth](https://stackoverflow.com/a/55064471)    
 
 # Getting Started
 
@@ -265,7 +265,6 @@ Other sites that I maintain:
 ### Grant permission to an app (Example Only For Grant): 
 
     pm grant com.application android.permission.READ_LOGS
-    
     
 ### Revoke permission to an app (Example Only For Revoke): 
 
@@ -551,9 +550,33 @@ Settings are sorted for root and user:
 
     am start -a android.intent.action.VIEW -d "geo:46.457398,-119.407305"
 
+### Simulate waking your app using the following commands:
+
+    am set-inactive <packageName> 
+    am set-inactive <packageName> false
+    
 ### Enabling Night Mode (If Supported)
     
     am start --ez show_night_mode true com.android.systemui/.tuner.TunerActivity
+
+### Start facebook application inbox by using URI
+
+    am start -a android.intent.action.VIEW -d facebook://facebook.com/inbox
+
+### Open a vcard file from sdcard (will open contacts app :) )
+
+    am start -a android.intent.action.VIEW -d file:///sdcard/me.vcard -t text/x-vcard
+
+##### Open an application to get content (in this case to get a jpeg picture)
+
+    am start -a android.intent.action.GET_CONTENT -t image/jpeg
+
+##### There is several ways to send a SMS via AM, here is just one of several ways:
+
+    aam broadcast -a com.whereismywifeserver.intent.TEST --es sms_body "test from adb"
+   
+   
+    
 
 # IMEI:
 
@@ -736,13 +759,17 @@ There is to much to describe here, get info by type getprop, but you can for exa
  
       getprop sys.boot_completed
 
+# Streaming
+
+### Play a mp3 track on device
+
+    am start -a android.intent.action.VIEW -d file:////storage/9A8A-1069/wuseman/ringtones/<mp3_track>.mp3 -t audio/mp3
+
 # Fastboot
 
 ### Print device info
-
-    
-    fastboot getvar all
-    
+   
+    fastboot getvar all   
     (bootloader) version:0.5
     (bootloader) variant:MTP eMMC
     (bootloader) secure:yes
@@ -821,8 +848,63 @@ There is to much to describe here, get info by type getprop, but you can for exa
 
 ### Print USB Mode (Charging only, MTP ... )
 
-    cat /sys/devices/soc0/hw_platform
+    cat /sys/devices/soc0/hw_platform'
     
+# Important Files / Folders
+
+#### SMS Is stored in:
+  
+    /data/user_de/0/com.android.providers.telephony/databases/mmssms.db
+    /data/user_de/0/com.android.providers.telephony/databases/telephony.db
+
+# Sounds
+
+    /system/media/audio/ui/                       
+    /system/media/audio/ringtones
+    /system/media/audio/notifications
+
+# Paths
+
+    /data/ssh
+    /data/adb/magisk
+    /data/data/<package>/databases (app databases)
+    /data/data/<package>/shared_prefs/ (shared preferences)
+    /data/app (apk installed by user)
+    /system/app (pre-installed APK files)
+    /mmt/asec (encrypted apps) (App2SD)
+    /mmt/emmc (internal SD Card)
+    /mmt/adcard (external/Internal SD Card)
+    /mmt/adcard/external_sd (external SD Card)
+     rm /data/misc/bootstat/boot_complete?
+
+# Rooted Devices:
+
+##### Is device rooted:
+
+    which su &> /dev/null;[[ $? = "0" ]] && echo "Rooted" || echo "Not rooted"
+
+# Magisk 
+
+##### Enable magiskhide
+
+     /sbin/magisk magiskhide enable
+     
+##### List hided apps by magisk
+
+    /sbin/magisk magiskhide list
+
+##### Add package to magiskhide
+
+     /sbin/magisk magiskhide add com.package
+    
+    
+# Samsung Stuff:
+
+#### Bypass Samsung Health block on rooted devices: 
+
+     mount -o rw,remount /system/etc/mkshrc
+     sed -i 's/ro.config.tima=1/ro.config.tima=0/g' build.prop
+
 # References
 
     http://tjtech.me/analyze-oem-unlocking-under-android.html
