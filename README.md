@@ -766,19 +766,18 @@ There is to much to describe here, get info by type getprop, but you can for exa
 
     http://tjtech.me/analyze-oem-unlocking-under-android.html
     
-    
 #### REQUIREMENTS
 
-Access to a shell via PC, all commands wont work via adb on your android device.
+    Access to a shell via PC, all commands wont work via adb on your android device.
 
 #### CONTACT 
 
-If you have problems, questions, ideas or suggestions please contact me by posting to wuseman@nr1.nu
+    If you have problems, questions, ideas or suggestions please contact me by posting to wuseman@nr1.nu
 
 #### WEB SITE
 
-Visit my websites and profiles for the latest info and updated tools
+    Visit my websites and profiles for the latest info and updated tools
 
-https://github.com/wuseman/ && https://nr1.nu && https://stackoverflow.com/users/9887151/wuseman
+    https://github.com/wuseman/ && https://nr1.nu && https://stackoverflow.com/users/9887151/wuseman
 
 #### END!
