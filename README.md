@@ -1,6 +1,9 @@
-# ADB
+# Android Debug Bridge (adb)
 
-Commands for android-tools
+Other sites that I maintain:
+
+    https://wiki.gentoo.org/wiki/Android/adb
+    h
 
 ### Start ADB server:
 
@@ -759,9 +762,24 @@ There is to much to describe here, get info by type getprop, but you can for exa
 
     cat /sys/devices/soc0/hw_platform
     
-# Good Pages:
- 
-    https://wiki.gentoo.org/wiki/Android/adb
-    http://tjtech.me/analyze-oem-unlocking-under-android.html
+    
+# References
 
-# adb-cheatsheet
+    http://tjtech.me/analyze-oem-unlocking-under-android.html
+    
+    
+#### REQUIREMENTS
+
+Access to a shell via PC, all commands wont work via adb on your android device.
+
+#### CONTACT 
+
+If you have problems, questions, ideas or suggestions please contact me by posting to wuseman@nr1.nu
+
+#### WEB SITE
+
+Visit my websites and profiles for the latest info and updated tools
+
+https://github.com/wuseman/ && https://nr1.nu && https://stackoverflow.com/users/9887151/wuseman
+
+#### END!
