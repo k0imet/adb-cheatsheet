@@ -174,7 +174,9 @@
 
     adb pull /storage/on/device/ /path/on/pc # Notice the trial slash
     
-# ADB package manager (please use cmd, it's alot faster then old pm) 
+# ADB package manager 
+
+I see many people using pm still in 2021 for this, use cmd since it's __alot__ faster then pm for handle what it is supposed to
 
 ### CMD
 
