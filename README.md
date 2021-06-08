@@ -5,6 +5,67 @@ Other sites that I maintain:
 [Gentoo Wiki - ADB](https://wiki.gentoo.org/wiki/Android/adb)
 <br>[Stackoverflow - Bluetooth](https://stackoverflow.com/a/55064471)    
 
+# Getting Started
+
+  
+![#2487AF](https://via.placeholder.com/15/2487AF/000000?text=+) How to setup ADB on Windows 10
+
+    1: Download: https://dl.google.com/android/repository/platform-tools-latest-windows.zip
+    2: Extract the contents of this ZIP file into an easily accessible folder (such as C:\platform-tools)
+    3: Open Windows explorer and browse to where you extracted the contents of this ZIP file
+    4: Then open up a Command Prompt from the same directory as this ADB binary. This can be done by holding 
+       Shift and Right-clicking within the folder then click the “Open command window here” option. 
+    5: Connect your smartphone or tablet to your computer with a USB cable. 
+       Change the USB mode to “file transfer (MTP)” mode. Some OEMs may or may not require this, 
+       but it’s best to just leave it in this mode for general compatibility.
+    6: In the Command Prompt window, enter the following command to launch the ADB daemon: adb devices
+    7: On your phone’s screen, you should see a prompt to allow or deny USB Debugging access. Naturally, 
+       you will want to grant USB Debugging access when prompted (and tap the always allow check box if you never want to see that prompt again).
+    8: Finally, re-enter the command from step #6. If everything was successful,
+       you should now see your device’s serial number in the command prompt (or the PowerShell window).
+
+![#000000](https://via.placeholder.com/15/000000/000000?text=+) How to setup ADB on macOSX
+
+    1. Download the Android SDK Platform Tools ZIP file for macOS.
+    2. Extract the ZIP to an easily-accessible location (like the Desktop for example).
+    3. Open Terminal.
+    4. To browse to the folder you extracted ADB into, enter the following command: cd /path/to/extracted/folder/
+    5. For example, on my Mac it was this: cd /Users/Doug/Desktop/platform-tools/
+    6. Connect your device to your Mac with a compatible USB cable. 
+        Change the USB connection mode to “file transfer (MTP)” mode. 
+        This is not always required for every device, but it’s best to just leave it in this mode so you don’t run into any issues.
+    7. Once the Terminal is in the same folder your ADB tools are in, you can execute the following command to launch the ADB daemon: ./adb devices
+    8. On your device, you’ll see an “Allow USB debugging” prompt. Allow the connection.
+    9. Finally, re-enter the command from step #7. If everything was successful, 
+       you should now see your device’s serial number in macOS’s Terminal window.
+
+![#FEEFC3](https://via.placeholder.com/15/FEEFC3/000000?text=+) How to setup ADB on GNU/Linux
+
+    1. Download the Android SDK Platform Tools ZIP file for Linux.
+    2. Extract the ZIP to an easily-accessible location (like the Desktop for example).
+    3. Open a Terminal window.
+    4. Enter the following command: cd /path/to/extracted/folder/
+    5. This will change the directory to where you extracted the ADB files.
+    6. So for example: cd /Users/Doug/Desktop/platform-tools/
+    7.Connect your device to your Linux machine with your USB cable. 
+      Change the connection mode to “file transfer (MTP)” mode. 
+      This is not always necessary for every device, but it’s recommended so you don’t run into any issues.
+    8. Once the Terminal is in the same folder your ADB tools are in, you can execute the following command to launch the ADB daemon: ./adb devices
+    9. Back on your smartphone or tablet device, you’ll see a prompt asking you to allow USB debugging. Go ahead and grant it.
+
+
+
+![#9B59B6](https://via.placeholder.com/15/9B59B6/000000?text=+) How to setup ADB on GNU/Linux Gentoo  
+
+    emerge --ask dev-util/android-sdk-update-manager
+
+![#D64613](https://via.placeholder.com/15/D64613/000000?text=+) How to setup ADB on Debian/Ubuntu
+
+    apt install adb fastboot -yuu
+
+
+# CLI Commands
+    
 ### Start ADB server:
 
     adb start-server 
