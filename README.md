@@ -2,8 +2,8 @@
 
 Other sites that I maintain:
 
-    https://wiki.gentoo.org/wiki/Android/adb
-    h
+[Gentoo Wiki - ADB](https://wiki.gentoo.org/wiki/Android/adb)
+<br>[Stackoverflow - Bluetooth](https://stackoverflow.com/a/55064471)    
 
 ### Start ADB server:
 
@@ -761,7 +761,6 @@ There is to much to describe here, get info by type getprop, but you can for exa
 ### Print USB Mode (Charging only, MTP ... )
 
     cat /sys/devices/soc0/hw_platform
-    
     
 # References
 
