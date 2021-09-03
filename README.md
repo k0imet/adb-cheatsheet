@@ -914,6 +914,25 @@ There is to much to describe here, get info by type getprop, but you can for exa
 
     which su &> /dev/null;[[ $? = "0" ]] && echo "Rooted" || echo "Not rooted"
 
+#### Read SIM card data
+
+    flame:/ # sqlite3 -line /data/user_de/0/com.android.providers.telephony/databases/telephony.db 'select icc_id,card_id,carrier_name,display_name,mcc,mnc from siminfo'
+
+      icc_id = 8946209802SSSSSSSSS
+     card_id = 8946209802SSSSSSSSS
+    carrier_name = 
+    display_name = CARD
+         mcc = 0
+         mnc = 0
+
+      icc_id = 8946209802SSSSSSSSS
+     card_id = 8946209802SSSSSSSSS
+    carrier_name = Telia
+    display_name = Telia
+         mcc = 240
+         mnc = 7
+
+
 # Magisk 
 
 ##### Enable magiskhide
