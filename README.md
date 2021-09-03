@@ -395,9 +395,21 @@ adb logcat -v color                                                             
 
 ### Examples:
 
+### Print codecs for bluetooth headphones:
+
+    dumpsys media.audio_flinger | grep -A3 Input 
+
 ### Show bluetooth macaddr, bluetooth name and such things:
 
     dumpsys bluetooth_manager
+
+### Dump phone registry:; 
+
+    dumpsys telephony.registry
+
+### Dumpsys gps data:
+
+    dumpsys location
 
 ### List all settngs and if they are true or false:
 
@@ -931,6 +943,15 @@ There is to much to describe here, get info by type getprop, but you can for exa
     display_name = Telia
          mcc = 240
          mnc = 7
+
+##### Read ICCID
+
+    sqlite3 /data/vendor/radio/qcril.db 'select ICCID from qcril_manual_prov_table'
+
+##### Sniff traffic via wireshark:
+
+    adb exec-out "tcpdump -i any -U -w - 2>/dev/null" | wireshark -k -S -i -
+
 
 
 # Magisk 
