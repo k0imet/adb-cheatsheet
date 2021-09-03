@@ -1,9 +1,28 @@
 # Android Debug Bridge (adb)
 
- Other sites that I maintain:
+
+Time flies, it's about time to get up new commands for our Android devices since there is really much stuff that is being added,updated and removed for our devices, I havent seen all those new commands anywere so hopefully this will be useful for you guys aswell.
+
+Feel free to contribute to this repo if there is something that i forgot and is worth to know, however, let me show you what's new.
+
+I decided to not add 'adb shell <coommands>' wich means all commands is executed when we are connected to device but of course if you want to, just add 'adb shell' infront of all commands and it will work aswell without being connected to the device shell
+
+All commands that require root will have (Root_Required) in descriptionn. Now we are ready to start, hey ho, let's go :)
 
 * [Gentoo Wiki - ADB](https://wiki.gentoo.org/wiki/Android/adb)
 * [Stackoverflow - Bluetooth](https://stackoverflow.com/a/55064471)    
+
+# Android CODE
+
+     https://cs.android.com/android/platform/superproject/
+
+# Android Downloads
+
+     https://source.android.com/compatibility/cts/downloads
+
+# Android Issue Tracker
+
+      https://code.google.com/p/android/issues/entry
 
 # Getting Started
 
@@ -394,6 +413,51 @@ adb logcat -v color                                                             
       ...................
 
 ### Examples:
+
+#### Tips:
+
+    If you want all services sorted by filename use below shell code:
+
+    for i in $(cat 1);do
+      adb shell dumpsys "$i" > "$i.txt";
+    done
+
+    dumpsys lock_settings
+    Current lock settings service state:
+
+    User State:
+     User 0
+     SP Handle: 5f0ef3437a85f55
+    Last changed: 2021-07-28 20:22:36 (b8212446331f2358)
+      SID: 3fffcda35ee6c180
+      Quality: 0
+     CredentialType: Pin
+     SeparateChallenge: true
+     Metrics: known
+  
+    Storage:
+    User 0 [/data/system_de/0/spblob]:
+        5 2021-07-28 20:22:36 05f0ef3437a85f55.weaver
+       31 2021-07-28 20:22:36 05f0ef3437a85f55.pwd
+       72 2021-07-28 20:22:36 05f0ef3437a85f55.metrics
+      186 2021-07-28 20:22:36 05f0ef3437a85f55.spblob
+       58 2021-07-28 20:22:36 0000000000000000.handle
+  
+    StrongAuth:
+    PrimaryAuthFlags state:
+     userId=0, primaryAuthFlags=0
+    
+     NonStrongBiometricAllowed state:
+    
+  
+    RebootEscrow:
+    mRebootEscrowWanted=false
+    mRebootEscrowReady=false
+    mRebootEscrowListener=com.android.server.recoverysystem.RecoverySystemService@bc1c4d8
+    mPendingRebootEscrowKey is not set
+  
+     Event log:
+
 
 ### Print codecs for bluetooth headphones:
 
