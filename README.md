@@ -1061,9 +1061,19 @@ There is to much to describe here, get info by type getprop, but you can for exa
 
     sqlite3 /data/vendor/radio/qcril.db 'select ICCID from qcril_manual_prov_table'
 
+##### Read .db files, clean:
+
+    grep -vx -f <(sqlite3 Main.db .dump) <(sqlite3 ${DB} .schema) 
+
 ##### Sniff traffic via wireshark:
 
     adb exec-out "tcpdump -i any -U -w - 2>/dev/null" | wireshark -k -S -i -
+
+##### Grab all file extensions of a kind and download to PC
+
+    for i in `adb shell "su -c find /data /system -name '*.key'"`; do 
+       mkdir -p ".`dirname $i`";adb shell "su -c cat $i" > ".$i";
+    done
 
 
 
@@ -1098,6 +1108,18 @@ There is to much to describe here, get info by type getprop, but you can for exa
     https://noobsec.org/project/2019-12-22-bypass-fingerprint-lock-in-just-1-second/
     https://noobsec.org/project/2018-11-04-cara-reverse-engineering-apk/
     https://docs.oracle.com/javase/specs/jvms/se9/html/jvms-4.html
+    https://www.raywenderlich.com/3419415-hack-an-android-app-finding-forensic-artifacts#toc-anchor-002
+    https://www.xda-developers.com/android-q-navigation-gesture-controls/#fitvid892986
+    https://developer.android.com/studio/run/emulator-console
+    https://developer.android.com/studio/write
+    https://android.googlesource.com/platform/frameworks/native/+/master/cmds/cmd/ # CMD
+    https://android.googlesource.com/
+    https://android.googlesource.com/platform/prebuilts/cmdline-tools/+/34a182b3646de1051ea2c9b23132d073bcaa5087/tools/bin/
+    https://android-generic.github.io/#documentation
+    https://source.android.com/devices/tech/debug/gdb
+    https://source.android.com/devices/tech/debug/understanding-logging
+    https://source.android.com/devices/tech/connect/connect_tests
+    https://adbshell.com/commands/adb-install
 
 #### REQUIREMENTS
 
