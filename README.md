@@ -201,12 +201,14 @@ I see many people using pm still in 2021 for this, use cmd since it's __alot__ f
 
 ##### Equivalent to receiving the TelephonyManager.ACTION_EMERGENCY_CALL_STATE_CHANGED broadcast.
 
-    Sets whether we are in the middle of an emergency call.
+Sets whether we are in the middle of an emergency call.
     
     cmd -w wifi set-emergency-call-state enabled|disabled
 
 ##### Equivalent to receiving the TelephonyManager.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED broadcast.
-                Sets whether Emergency Callback Mode (ECBM) is enabled.
+
+Sets whether Emergency Callback Mode (ECBM) is enabled.
+
     cmd -w wifi set-emergency-callback-mode enabled|disabled
 
 #####  Lists the suggested networks from the app
@@ -214,35 +216,32 @@ I see many people using pm still in 2021 for this, use cmd since it's __alot__ f
     cmd -w wifi list-suggestions-from-app <package name>
 
 ##### Lists all suggested networks on this device
+ 
     cmd -w wifi list-all-suggestions
 
 ##### Note: This only returns whether the app was set via the 'network-requests-set-user-approved' shell command
 
-     Queries whether network requests from the app is approved or not.
+Queries whether network requests from the app is approved or not.
+
     cmd -w wifi network-requests-has-user-approved <package name>
 
 ##### Note: Only 1 such app can be approved from the shell at a time
-                Sets whether network requests from the app is approved or not.
+
+Sets whether network requests from the app is approved or not.
+
     cmd -w wifi network-requests-set-user-approved <package name> yes|no
 
 #####  Lists the requested networks added via shell
+
     cmd -w wifi list-requests
 
 ##### Removes all active requests added via shell
+
     cmd -w wifi remove-all-requests
 
 ##### Remove a network request with provided SSID of the network
+    
     cmd -w wifi remove-request <ssid>
-                -b <bssid> - Set specific BSSID.
-                - 'wpa3' - WPA-3 PSK networks
-                                         - 'wpa2' - WPA-2 PSK networks (Most prevalent)
-                                - Use 'wpa2' or 'wpa3' for networks with passphrase
-                                         - 'owe' - Enhanced open networks
-                                         - 'open' - Open networks (Most prevalent)
-                                - Use 'open' or 'owe' for networks with no passphrase
-                open|owe|wpa2|wpa3 - Security type of the network.
-                <ssid> - SSID of the network
-                Use 'network-requests-set-user-approved android yes' to pre-approve requests added via rooted shell (Not persisted)
 
 ##### Add a network request with provided params
 
@@ -267,7 +266,6 @@ I see many people using pm still in 2021 for this, use cmd since it's __alot__ f
 ##### Sets country code to <two-letter code> or left for normal value
     
     cmd -w wifi force-country-code enabled <two-letter code> | disabled 
-
 
 ##### Manually triggers a link probe.
     
@@ -333,15 +331,18 @@ Sets whether we are in the middle of an emergency call.
     cmd -w wifi list-suggestions-from-app <package name>
 
 ##### Lists all suggested networks on this device
+
     cmd -w wifi list-all-suggestions
 
 ##### Note: This only returns whether the app was set via the 'network-requests-set-user-approved' shell command
-##### Queries whether network requests from the app is approved or not.
+
+Queries whether network requests from the app is approved or not.
 
     cmd -w wifi network-requests-has-user-approved <package name>
 
 ##### Note: Only 1 such app can be approved from the shell at a time
-##### Sets whether network requests from the app is approved or not.
+
+Sets whether network requests from the app is approved or not.
 
     cmd -w wifi network-requests-set-user-approved <package name> yes|no
 
@@ -364,7 +365,6 @@ Sets whether we are in the middle of an emergency call.
 ##### Initiates wifi settings reset
 
     cmd -w wifi settings-reset
-
 
 ##### and/or 'wifi_softap_wpa3_sae_supported', each on a separate line.
 
@@ -578,19 +578,7 @@ Sets whether we are in the middle of an emergency call.
 ## Run all at once, no reason for use it like this really
 
 adb logcat -v brief -v long -v process -v raw -v tag -v thread -v threadtime -v time -v color       
-
-adb logcat -v brief                                                                                                            message.
-adb logcat -v long                                                                                                              ## Display all metadata fields, separate messages with blank lines.
-adb logcat -v process                                                                                                           ## Display PID only.
-adb logcat -v raw                                                                                                               ## Display the raw log message, with no other metadata fields.
-adb logcat -v tag                                                                                                               ## Display the priority/tag only.
-adb logcat -v thread                                                                                                            ## Display priority, PID and TID of process issuing the message.
-adb logcat -v threadtime                                                                                                        ## Display the date, invocation time, priority, tag, and the PID (Default)
-adb logcat -v time                                                                                                              ## Display the date, invocation time, priority/tag, and PID
-adb logcat -v color                                                                                                             ## Use colors, were:
-                                                                                                                                ## --->  Blue:  DEBUG
-                                                                                                                                ## ----->  Green: INFO
-                                                                                                                                ## ------->  Orange: WARNING
+                                                                                                                        ## ------->  Orange: WARNING
 
 # DUMPSYS
 
@@ -598,7 +586,7 @@ adb logcat -v color                                                             
 
     dumpsys -l 
     
-    oln older devices
+    For older devices:
     
     dumpsys -l |sed 's/^  /      /g'
     Currently running services:
@@ -809,8 +797,8 @@ Settings are sorted for root and user:
 
      
 # AM
-###### https://github.com/jfsso/PreferencesEditor
 
+Few of those examples is from : https://github.com/jfsso/PreferencesEditor
 
 # Add a value to default shared preferences.
 
@@ -913,15 +901,15 @@ Settings are sorted for root and user:
 
     am start -a android.intent.action.VIEW -d file:///sdcard/me.vcard -t text/x-vcard
 
-####### Open an application to get content (in this case to get a jpeg picture)
+###### Open an application to get content (in this case to get a jpeg picture)
 
     am start -a android.intent.action.GET_CONTENT -t image/jpeg
 
-####### There is several ways to send a SMS via AM, here is just one of several ways:
+###### There is several ways to send a SMS via AM, here is just one of several ways:
 
     aam broadcast -a com.whereismywifeserver.intent.TEST --es sms_body "test from adb"
    
-####### Demo Call   
+###### Demo Call   
 
 Establishes a fake Bluetooth connection to Dialer and must be called first to enable access to all call-related commands.
 
@@ -933,22 +921,21 @@ Establishes a fake Bluetooth connection to Dialer and must be called first to en
     adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "unholdCall"                            ## Unhold the current call
     adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "unholdCall"                            ## Merge calls
     adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "clearAll"                              ## Clear all calls, To remove all calls in the call list:
+   
 
-    
+# Print IMEI:
 
-# IMEI:
+##### Print Imei Card Slot 1: 
 
-##### Print IMEI (Method 1)
+Method 1
 
     service call iphonesubinfo 1| cut -d "'" -f2| grep -Eo '[0-9]'| xargs| sed 's/\ //g'  
-    
-## Print IMEI 1 & 2 (Method 2)
 
-###### Imei 1:
-    
+Method 1
+   
     service call iphonesubinfo 3 i32 1 | grep -oE '[0-9a-f]{8} ' | while read hex; do echo -ne "\u${hex:4:4}\u${hex:0:4}"; done; echo          
 
-###### Imei 2: 
+###### Imei Card Slot 2: 
        
     service call iphonesubinfo 3 i32 2 | grep -oE '[0-9a-f]{8} ' | while read hex; do echo -ne "\u${hex:4:4}\u${hex:0:4}"; done; echo       
     
@@ -1102,7 +1089,7 @@ There is to much to describe here, get info by type getprop, but you can for exa
 
     keytool -exportcert -alias your_alias -keystore debug.keystore | openssl sha1 -binary | openssl base64 
 
-# Typically used in Google Maps
+##### Typically used in Google Maps
 
     keytool -list -v -keystore ~/.android/debug.keystore -alias your_alia           
 
@@ -1142,7 +1129,13 @@ There is to much to describe here, get info by type getprop, but you can for exa
 
 ##### Print all application in use in a for loop 
 
-    pm list packages | sed -e "s/package://" | while read x; do cmd package resolve-activity --brief $x | tail -n 1 | grep -v "No activity found";done 
+    pm list packages | sed -e "s/package://" \
+    |while read x; do 
+        cmd package resolve-activity --brief $x \
+        | tail -n 1 \
+        | grep -v "No activity found" 
+    done 
+
     com.google.android.youtube/.app.honeycomb.Shell$HomeActivity
     com.google.android.googlequicksearchbox/.SearchActivity
     com.google.android.apps.docs.editors.docs/com.google.android.apps.docs.app.NewMainProxyActivity
@@ -1186,9 +1179,12 @@ There is to much to describe here, get info by type getprop, but you can for exa
 
 ##### Is OEM unlocking enable or not
 
+1 = Enable
+0 = Disable
+
       getprop sys.oem_unlock_allowed 
       
- ##### Is sys boot completed:
+##### Is sys boot completed:
  
       getprop sys.boot_completed
 
@@ -1197,87 +1193,6 @@ There is to much to describe here, get info by type getprop, but you can for exa
 ##### Play a mp3 track on device
 
     am start -a android.intent.action.VIEW -d file:////storage/9A8A-1069/wuseman/ringtones/<mp3_track>.mp3 -t audio/mp3
-
-# Fastboot
-
-##### Print device info
-   
-    fastboot getvar all   
-    (bootloader) version:0.5
-    (bootloader) variant:MTP eMMC
-    (bootloader) secure:yes
-    (bootloader) version-baseband:
-    (bootloader) version-bootloader:
-    (bootloader) display-panel:
-    (bootloader) off-mode-charge:0
-    (bootloader) charger-screen-enabled:0
-    (bootloader) max-download-size: 0x20000000
-    (bootloader) partition-type:cache:ext4
-    (bootloader) partition-size:cache:       0x20000000
-    (bootloader) partition-type:userdata:ext4
-    (bootloader) partition-size:userdata:    0x5ba000000
-    (bootloader) partition-type:system:ext4
-    (bootloader) partition-size:system:      0x15d800000
-    (bootloader) dm_count:0
-    (bootloader) lock_count:1
-    (bootloader) unlock_count:2
-    (bootloader) serialno:LGH87011067135
-    (bootloader) kernel:lk
-    (bootloader) product:MSM8996
-    (bootloader) unlocked:yes
-
-##### Fastboot commands
-
-    fastboot erase config
-    fastboot reboot
-    fastboot oem get-psid                               #_Print_Serial_and_IMEI
-    fastboot getvar rescue_version                      #_Print_rescue_mode
-    fastboot getvar rescue_phoneinfo                    #_Print_phone_model
-    fsatboot getvar_vendorcountry                       #_Print_vendorcountry
-    fastboot getvar rescue_ugs_port                     #_Print_rescue_ugs_port
-    fastboot getvar rescue_enter_recovery               #_Enter_recovery
-    fastboot getvar max-download-size                   #_Print_max_download_size
-    fastboot getvar error_print                         #_Print_amount_of_errors
-    fastboot getvar partition-type                      #_Print_partition_type
-    fastboot oem get_key_version                        #_Print_version_key
-    fastboot oem battery_present_check                  #_Print_battery_millivolt
-    fastboot continue                                   #_Fastboot_continue
-    fastboot oem get_hwnff_ver                          #_Get_hwnff_version
-    fastboot oem reboot_boot_dump                       # UNKNOWN
-    fastboot getvar rescue_version                      # Print rescue version
-    fastboot getvar rescue_phoneinfo                    # Print rescue model
-    fastboot getvar devicemodel                         # Print device model
-    fastboot getvar rescue_ugs_port                     # Print rescue port
-    fastboot getvar error_print                         # Error Print
-    fastboot getvar rescue_enter_recovery               # Enter recover
-    fastboot getvar rescue_get_hwid                     # (bootloader) xxxxxxxxxxxx / xxxxxxxxxxxx (bootloader) 
-    fastboot getvar inject_bootfail_memory_address      # NO DESCRIPTION - FOUND WHEN I CRACKED THE BOOTLOADER
-    fastboot getvar rescue_get_updatetoken              # NO DESCRIPTION - FOUND WHEN I CRACKED THE BOOTLOADER
-    fastboot getvar max-download-size                   # NO DESCRIPTION - FOUND WHEN I CRACKED THE BOOTLOADER
-    fastboot oem check-rootinfo                         # NO DESCRIPTION - FOUND WHEN I CRACKED THE BOOTLOADER
-    fastboot oem get-bootinfo                           # NO DESCRIPTION - FOUND WHEN I CRACKED THE BOOTLOADER
-    fastboot oem get-product-model                      # NO DESCRIPTION - FOUND WHEN I CRACKED THE BOOTLOADER
-    fastboot oem get-build-number                       # NO DESCRIPTION - FOUND WHEN I CRACKED THE BOOTLOADER
-    fastboot oem unlock
-    fastboot oem check-image                            
-    fastboot oem relock
-    fastboot oem frp-unlock
-    fastboot oem get_key_version
-    fastboot oem battery_present_check
-    fastboot oem unlock_func
-    fastboot oem get_hwnff_ver
-    fastboot getvar error_print
-    fastboot oem oeminforead
-    fastboot oem get_bootFail_ver_func
-    fastboot oem func
-    fastboot oem get_bootFail_info_func
-    fastboot oem relock_func
-    fastboot oem reboot_boot_dump_func
-    fastboot oem hwdog certify begin
-    fastboot oem get-product-model
-    fastboot oem get-build-number
-    fastboot oem get_hwnff_ver_func
-    fastboot flashing unlock
 
 ##### Print USB Mode (Charging only, MTP ... )
 
