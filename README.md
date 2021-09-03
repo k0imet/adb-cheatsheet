@@ -199,9 +199,220 @@ I see many people using pm still in 2021 for this, use cmd since it's __alot__ f
 
 ### CMD
 
+### Equivalent to receiving the TelephonyManager.ACTION_EMERGENCY_CALL_STATE_CHANGED broadcast.
+
+    Sets whether we are in the middle of an emergency call.
+    
+    cmd -w wifi set-emergency-call-state enabled|disabled
+
+### Equivalent to receiving the TelephonyManager.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED broadcast.
+                Sets whether Emergency Callback Mode (ECBM) is enabled.
+    cmd -w wifi set-emergency-callback-mode enabled|disabled
+
+###  Lists the suggested networks from the app
+
+    cmd -w wifi list-suggestions-from-app <package name>
+
+### Lists all suggested networks on this device
+    cmd -w wifi list-all-suggestions
+
+### Note: This only returns whether the app was set via the 'network-requests-set-user-approved' shell command
+
+     Queries whether network requests from the app is approved or not.
+    cmd -w wifi network-requests-has-user-approved <package name>
+
+### Note: Only 1 such app can be approved from the shell at a time
+                Sets whether network requests from the app is approved or not.
+    cmd -w wifi network-requests-set-user-approved <package name> yes|no
+
+###  Lists the requested networks added via shell
+    cmd -w wifi list-requests
+
+### Removes all active requests added via shell
+    cmd -w wifi remove-all-requests
+
+### Remove a network request with provided SSID of the network
+    cmd -w wifi remove-request <ssid>
+                -b <bssid> - Set specific BSSID.
+                - 'wpa3' - WPA-3 PSK networks
+                                         - 'wpa2' - WPA-2 PSK networks (Most prevalent)
+                                - Use 'wpa2' or 'wpa3' for networks with passphrase
+                                         - 'owe' - Enhanced open networks
+                                         - 'open' - Open networks (Most prevalent)
+                                - Use 'open' or 'owe' for networks with no passphrase
+                open|owe|wpa2|wpa3 - Security type of the network.
+                <ssid> - SSID of the network
+                Use 'network-requests-set-user-approved android yes' to pre-approve requests added via rooted shell (Not persisted)
+
+### Add a network request with provided params
+
+    cmd -w wifi add-request <ssid> open|owe|wpa2|wpa3 [<passphrase>] [-b <bssid>]
+
+### Initiates wifi settings reset
+    
+    cmd -w wifi settings-reset
+
+### Gets softap supported features. Will print 'wifi_softap_acs_supported'
+    
+    cmd -w wifi get-softap-supported-features
+
+### Gets setting of wifi watchdog trigger recovery.
+    
+    cmd -w wifi get-wifi-watchdog
+
+### Sets whether wifi watchdog should trigger recovery
+
+    cmd -w wifi set-wifi-watchdog enabled|disabled
+
+### Sets country code to <two-letter code> or left for normal value
+    
+    cmd -w wifi force-country-code enabled <two-letter code> | disabled 
+
+
+### Manually triggers a link probe.
+    
+    cmd -w wifi send-link-probe
+
+### Clears the user disabled networks list.
+    
+    cmd -w wifi clear-user-disabled-networks
+
+### Removes all user approved network requests for the app.
+
+    cmd -w wifi network-requests-remove-user-approved-access-points <package name>
+
+### Clear the user choice on Imsi protection exemption for carrier
+
+    cmd -w wifi imsi-protection-exemption-clear-user-approved-for-carrier <carrier id>
+
+### Queries whether Imsi protection exemption for carrier is approved or not
+
+    cmd -w wifi imsi-protection-exemption-has-user-approved-for-carrier <carrier id>
+
+### Sets whether Imsi protection exemption for carrier is approved or not
+
+    cmd -w wifi imsi-protection-exemption-set-user-approved-for-carrier <carrier id> yes|no
+
+### Queries whether network suggestions from the app is approved or not.
+
+    cmd -w wifi network-suggestions-has-user-approved <package name>
+
+### Sets whether network suggestions from the app is approved or not.
+
+    cmd -w wifi network-suggestions-set-user-approved <package name> yes|no
+
+### Sets whether low latency mode is forced or left for normal operation.
+
+    cmd -w wifi force-low-latency-mode enabled|disabled
+
+### Sets whether hi-perf mode is forced or left for normal operation.
+
+    cmd -w wifi force-hi-perf-mode enabled|disabled
+
+### Gets current interval between RSSI polls, in milliseconds.
+
+    cmd -w wifi get-poll-rssi-interval-msecs
+
+### Sets the interval between RSSI polls to <int> milliseconds.
+
+    cmd -w wifi set-poll-rssi-interval-msecs <int>
+
+### Gets setting of CMD_IP_REACHABILITY_LOST events triggering disconnects.
+
+Equivalent to receiving the TelephonyManager.ACTION_EMERGENCY_CALL_STATE_CHANGED broadcast.
+Sets whether we are in the middle of an emergency call.
+
+    cmd -w wifi set-emergency-call-state enabled|disabled
+
+### Equivalent to receiving the TelephonyManager.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED broadcast.
+
+    cmd -w wifi set-emergency-callback-mode enabled|disabled
+
+### Lists the suggested networks from the app
+
+    cmd -w wifi list-suggestions-from-app <package name>
+
+### Lists all suggested networks on this device
+    cmd -w wifi list-all-suggestions
+
+### Note: This only returns whether the app was set via the 'network-requests-set-user-approved' shell command
+### Queries whether network requests from the app is approved or not.
+
+    cmd -w wifi network-requests-has-user-approved <package name>
+
+### Note: Only 1 such app can be approved from the shell at a time
+### Sets whether network requests from the app is approved or not.
+
+    cmd -w wifi network-requests-set-user-approved <package name> yes|no
+
+### Lists the requested networks added via shell
+
+    cmd -w wifi list-requests
+
+### Removes all active requests added via shell
+
+    cmd -w wifi remove-all-requests
+
+### Remove a network request with provided SSID of the network
+
+    cmd -w wifi remove-request <ssid>
+
+### Add a network request with provided params
+
+    cmd -w wifi add-request <ssid> open|owe|wpa2|wpa3 [<passphrase>] [-b <bssid>]
+
+### Initiates wifi settings reset
+
+    cmd -w wifi settings-reset
+
+
+### and/or 'wifi_softap_wpa3_sae_supported', each on a separate line.
+
+    cmd -w wifi get-softap-supported-features
+
+### Gets setting of wifi watchdog trigger recovery.
+
+    cmd -w wifi get-wifi-watchdog
+
+### Sets whether wifi watchdog should trigger recovery
+
+    cmd -w wifi set-wifi-watchdog enabled|disabled
+
+### Sets country code to <two-letter code> or left for normal value
+    cmd -w wifi force-country-code enabled <two-letter code> | disabled 
+
+
+### Sets whether soft AP channel is forced to <int> MHz
+
+    cmd -w wifi force-softap-channel enabled <int> | disabled
+
+### Manually triggers a link probe.
+ 
+    cmd -w wifi send-link-probe
+
+### Clears the user disabled networks list.
+ 
+    cmd -w wifi clear-user-disabled-networks
+
+### Removes all user approved network requests for the app.
+ 
+    cmd -w wifi network-requests-remove-user-approved-access-points <package name>
+
+### Clear the user choice on Imsi protection exemption for carrier
+ 
+    cmd -w wifi imsi-protection-exemption-clear-user-approved-for-carrier <carrier id>
+
+### Queries whether Imsi protection exemption for carrier is approved or not
+ 
+    cmd -w wifi imsi-protection-exemption-has-user-approved-for-carrier <carrier id>
+
+### Sets whether Imsi protection exemption for carrier is approved or not
+ 
+    cmd -w wifi imsi-protection-exemption-set-user-approved-for-carrier <carrier id> yes|no
+
 ### List uid owner of a app
 
-    cmd package list packages -U                                           
+    cmd package list packages -U###                            
 
 ### List packages a.k.a: pm list packages
 
