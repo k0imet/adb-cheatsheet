@@ -532,6 +532,44 @@ Settings are sorted for root and user:
 
      
 # AM
+#### https://github.com/jfsso/PreferencesEditor
+
+
+# Add a value to default shared preferences.
+
+    adb shell 'am broadcast -a org.example.app.sp.PUT --es key key_name --es value "hello world!"'
+
+# Remove a value to default shared preferences.
+
+    adb shell 'am broadcast -a org.example.app.sp.REMOVE --es key key_name'
+
+# Clear all default shared preferences.
+
+    adb shell 'am broadcast -a org.example.app.sp.CLEAR --es key key_name'
+
+# It's also possible to specify shared preferences file.
+
+    adb shell 'am broadcast -a org.example.app.sp.PUT --es name Game --es key level --ei value 10'
+
+# Data types
+
+    adb shell 'am broadcast -a org.example.app.sp.PUT --es key string --es value "hello world!"'
+    adb shell 'am broadcast -a org.example.app.sp.PUT --es key boolean --ez value true'
+    adb shell 'am broadcast -a org.example.app.sp.PUT --es key float --ef value 3.14159'
+    adb shell 'am broadcast -a org.example.app.sp.PUT --es key int --ei value 2015'
+    adb shell 'am broadcast -a org.example.app.sp.PUT --es key long --el value 9223372036854775807'
+
+# Restart application process after making changes
+
+    adb shell 'am broadcast -a org.example.app.sp.CLEAR --ez restart true'
+
+### Open Google Camera (Pixel 4)
+
+    am start com.google.android.GoogleCamera 
+
+### Set default preferences for an app:
+
+    am broadcast -a org.example.app.sp.CLEAR --es key key_name
 
 ### Factory Reset:
 
@@ -666,11 +704,86 @@ Establishes a fake Bluetooth connection to Dialer and must be called first to en
 
     aam broadcast -a com.whereismywifeserver.intent.TEST --es sms_body "test from adb"
 
-### Trick device that setup already has been done:
+
+# Content
+
+#### Main stuff: 
+
+    content query --uri content://settings/global
+    content query --uri content://settings/settings
+    content query --uri content://settings/seure
+
+
+#### Trick device that setup already has been done:
 
      content insert --uri content://settings/secure --bind name:s:user_setup_complete --bind value:s:1
      am start -n com.google.android.gsf.login/
      am start -n com.google.android.gsf.login.LoginActivity
+
+#### Print files for all applications
+
+    content query --uri content://media/external/file --projection _data
+
+#### Select "name" and "value" columns from secure settings where "name" is equal to "new_setting" and sort the result by name in ascending order
+
+    content query --uri content://settings/secure --projection name:value
+
+####  Remove "new_setting" secure setting.
+
+    content delete --uri content://settings/secure --where "name='new_setting'"
+
+#### Download current ringtone and play on PC via ffplay: 
+
+     adb shell 'content read --uri content://settings/system/ringtone_cache' > a.ogg|xargs ffplay a.ogg
+ 
+#### Various ways to print contacts
+
+     adb shell content query --uri content://contacts/phones/  --projection display_name:number:notes 
+     adb shell content query --uri content://com.android.contacts/data --projection display_name:data1:data4:contact_id
+     adb shell content query --uri content://contacts/people/
+
+#### Print Phone numbers
+
+     adb shell content query --uri content://contacts/phones/
+
+##### Print contacts GROUPS:
+
+     adb shell content query --uri content://contacts/groups/
+
+##### Print group membership:
+
+     adb shell content query --uri content://contacts/groupmembership/
+
+##### Print organiztations: 
+
+    adb shell content query --uri content://contacts/organizations/
+
+##### Print call log
+
+    adb shell content query --uri content://call_log/calls
+
+
+##### Print various SMS stuff: 
+
+    adb shell content query --uri content://sms/conversations
+    adb shell content query --uri content://sms/conversations
+    adb shell content query --uri content://sms/draft
+    adb shell content query --uri content://sms/inbox
+    adb shell content query --uri content://sms/outbox
+    adb shell content query --uri content://sms/sent
+
+##### Print various MMS stuff: 
+
+    adb shell content query --uri content://mms
+    adb shell content query --uri content://mms/inbox
+    adb shell content query --uri content://mms/outbox
+    adb shell content query --uri content://mms/part
+    adb shell content query --uri content://mms/sent
+    adb shell content query --uri content://mms-sms/conversations
+    adb shell content query --uri content://mms-sms/draft
+    adb shell content query --uri content://mms-sms/locked
+    adb shell content query --uri content://mms-sms/search
+
 
 # GETPROP
 
@@ -979,7 +1092,13 @@ There is to much to describe here, get info by type getprop, but you can for exa
 # References
 
     http://tjtech.me/analyze-oem-unlocking-under-android.html
-    
+    https://mazhuang.org/awesome-adb/README.en.html
+    https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters/blob/master/assets/mobile.md
+    https://github.com/randorisec/MobileHackingCheatSheet
+    https://noobsec.org/project/2019-12-22-bypass-fingerprint-lock-in-just-1-second/
+    https://noobsec.org/project/2018-11-04-cara-reverse-engineering-apk/
+    https://docs.oracle.com/javase/specs/jvms/se9/html/jvms-4.html
+
 #### REQUIREMENTS
 
     Access to a shell via PC, all commands wont work via adb on your android device.
