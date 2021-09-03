@@ -345,6 +345,23 @@ I see many people using pm still in 2021 for this, use cmd since it's __alot__ f
 
     adb logcat -b main -b radio -b events
 
+## Run all at once, no reason for use it like this really
+
+adb logcat -v brief -v long -v process -v raw -v tag -v thread -v threadtime -v time -v color       
+
+adb logcat -v brief                                                                                                            message.
+adb logcat -v long                                                                                                              ## Display all metadata fields, separate messages with blank lines.
+adb logcat -v process                                                                                                           ## Display PID only.
+adb logcat -v raw                                                                                                               ## Display the raw log message, with no other metadata fields.
+adb logcat -v tag                                                                                                               ## Display the priority/tag only.
+adb logcat -v thread                                                                                                            ## Display priority, PID and TID of process issuing the message.
+adb logcat -v threadtime                                                                                                        ## Display the date, invocation time, priority, tag, and the PID (Default)
+adb logcat -v time                                                                                                              ## Display the date, invocation time, priority/tag, and PID
+adb logcat -v color                                                                                                             ## Use colors, were:
+                                                                                                                                ## --->  Blue:  DEBUG
+                                                                                                                                ## ----->  Green: INFO
+                                                                                                                                ## ------->  Orange: WARNING
+
 # DUMPSYS
 
 ### List all active services:
@@ -577,7 +594,19 @@ Settings are sorted for root and user:
 
     aam broadcast -a com.whereismywifeserver.intent.TEST --es sms_body "test from adb"
    
-   
+##### Demo Call   
+
+Establishes a fake Bluetooth connection to Dialer and must be called first to enable access to all call-related commands.
+
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "connect"                               ## To connect a device
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "addCall" --es "id" "4085524874"        ## Place an outgoing call
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "rcvCall" --es "id" "4085524874"        ## Receive an incoming call
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "endCall" --es "id" "4085524874"        ## End a call
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "holdCall"                              ## Hold the current call
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "unholdCall"                            ## Unhold the current call
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "unholdCall"                            ## Merge calls
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "clearAll"                              ## Clear all calls, To remove all calls in the call list:
+
     
 
 # IMEI:
