@@ -1010,24 +1010,24 @@ Method 1
 
      adb shell content query --uri content://contacts/phones/
 
-####### Print contacts GROUPS:
+##### Print contacts GROUPS:
 
      adb shell content query --uri content://contacts/groups/
 
-####### Print group membership:
+##### Print group membership:
 
      adb shell content query --uri content://contacts/groupmembership/
 
-####### Print organiztations: 
+##### Print organiztations: 
 
     adb shell content query --uri content://contacts/organizations/
 
-####### Print call log
+##### Print call log
 
     adb shell content query --uri content://call_log/calls
 
 
-####### Print various SMS stuff: 
+##### Print various SMS stuff: 
 
     adb shell content query --uri content://sms/conversations
     adb shell content query --uri content://sms/conversations
@@ -1036,7 +1036,7 @@ Method 1
     adb shell content query --uri content://sms/outbox
     adb shell content query --uri content://sms/sent
 
-####### Print various MMS stuff: 
+##### Print various MMS stuff: 
 
     adb shell content query --uri content://mms
     adb shell content query --uri content://mms/inbox
@@ -1227,7 +1227,7 @@ There is to much to describe here, get info by type getprop, but you can for exa
 
 # Rooted Devices:
 
-####### Is device rooted:
+##### Is device rooted:
 
     which su &> /dev/null;[[ $? = "0" ]] && echo "Rooted" || echo "Not rooted"
 
@@ -1249,19 +1249,19 @@ There is to much to describe here, get info by type getprop, but you can for exa
          mcc = 240
          mnc = 7
 
-####### Read ICCID
+##### Read ICCID
 
     sqlite3 /data/vendor/radio/qcril.db 'select ICCID from qcril_manual_prov_table'
 
-####### Read .db files, clean:
+##### Read .db files, clean:
 
     grep -vx -f <(sqlite3 Main.db .dump) <(sqlite3 ${DB} .schema) 
 
-####### Sniff traffic via wireshark:
+##### Sniff traffic via wireshark:
 
     adb exec-out "tcpdump -i any -U -w - 2>/dev/null" | wireshark -k -S -i -
 
-####### Grab all file extensions of a kind and download to PC
+##### Grab all file extensions of a kind and download to PC
 
     for i in `adb shell "su -c find /data /system -name '*.key'"`; do 
        mkdir -p ".`dirname $i`";adb shell "su -c cat $i" > ".$i";
@@ -1271,15 +1271,15 @@ There is to much to describe here, get info by type getprop, but you can for exa
 
 # Magisk 
 
-####### Enable magiskhide
+##### Enable magiskhide
 
      /sbin/magisk magiskhide enable
      
-####### List hided apps by magisk
+##### List hided apps by magisk
 
     /sbin/magisk magiskhide list
 
-####### Add package to magiskhide
+##### Add package to magiskhide
 
      /sbin/magisk magiskhide add com.package
     
