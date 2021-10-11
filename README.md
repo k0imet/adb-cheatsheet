@@ -1,6 +1,6 @@
 # Feel free to help
 
-<p> If you are good at writing READMEs feel free to build this repo with some more stylish and with a better layout for various commands, would be appreciated, however, i spent alot of time for this wiki and there is much more to be added, android via cli pwnz! This readme are OK I guess but it would be better if they as awesome ;) Alot of small fixes and such must be done and i really don't have the time for this atm and Android 12 is here with new stuff to learn
+<p> If you are good at writing READMEs feel free to build this repo with some more stylish and with a better layout for various commands, would be appreciated, however, i spent alot of time for this wiki and there is much more to be added, android via cli pwnz! This readme are OK I guess but it would be better if it's  awesome ;) Alot of small fixes and such must be done and i really don't have the time for this atm and Android 12 is here with new stuff to learn
 
 # Android Debug Bridge (adb)
 
