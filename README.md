@@ -1,6 +1,6 @@
 # Android Debug Bridge (adb)
 
-If youre goot at writing READMEs feel free to build this repo with some more stylish and with a better layout for various commands, would be appreciated, however, i spent alot of time for this wiki and there is much more to be added, android via cli pwnz! This readme are OK I guess but it would be better if they as awesome ;) Alot of small fixes and such must be done and i really don't have the time for this atm
+    If youre goot at writing READMEs feel free to build this repo with some more stylish and with a better layout for various commands, would be appreciated, however, i spent alot of time for this wiki and there is much more to be added, android via cli pwnz! This readme are OK I guess but it would be better if they as awesome ;) Alot of small fixes and such must be done and i really don't have the time for this atm
 
 
 Time flies, it's about time to get up new commands for our Android devices since there is really much stuff that is being added,updated and removed for our devices, I havent seen all those new commands anywere so hopefully this will be useful for you guys aswell.
