@@ -1,5 +1,8 @@
-# Android Debug Bridge (adb)
+# Feel free to help
 
+<p> If you are good at writing READMEs feel free to build this repo with some more stylish and with a better layout for various commands, would be appreciated, however, i spent alot of time for this wiki and there is much more to be added, android via cli pwnz! This readme are OK I guess but it would be better if it's  awesome ;) Alot of small fixes and such must be done and i really don't have the time for this atm and Android 12 is here with new stuff to learn
+
+# Android Debug Bridge (adb)
 
 Time flies, it's about time to get up new commands for our Android devices since there is really much stuff that is being added,updated and removed for our devices, I havent seen all those new commands anywere so hopefully this will be useful for you guys aswell.
 
@@ -1248,6 +1251,32 @@ There is to much to describe here, get info by type getprop, but you can for exa
 
     which su &> /dev/null;[[ $? = "0" ]] && echo "Rooted" || echo "Not rooted"
 
+##### Bypass Google Pay block for rooted devices
+
+Stop wallnetfcrel
+
+     am force-stop /data/data/com.google.android.apps.walletnfcrel
+
+     Hide root for Google apps:
+     
+      for google_apps in $(cmd package list packages|grep -i com.google |cut -d: -f2); do 
+          magiskhide add ${google_apps}; 
+      done    
+     
+Change permissions on dg.db to read-and-write:
+     
+     su sh -c chmod 0777 /data/data/com.google.android.gms/databases/dg.db
+
+Use below command fr update dg.db file:
+          
+     sqlite3 /data/data/com.google.android.gms/databases/dg.db "update main set c='0' where a like '%attest%';" 
+
+Now change permissions on dg.db to 0444
+     
+     chmod 0444 /data/data/com.google.android.gms/databases/dg.db
+
+Clear cache for your Google Pay application and have fun! :)
+     
 ###### Read SIM card data
 
     flame:/ # sqlite3 -line /data/user_de/0/com.android.providers.telephony/databases/telephony.db 'select icc_id,card_id,carrier_name,display_name,mcc,mnc from siminfo'
