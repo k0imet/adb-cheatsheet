@@ -7,7 +7,7 @@
 #       Version: 1.0
 #
 #       Created: 2021-09-26 (21:16:38)
-#      Modified: 2021-09-26 (21:16:42)
+#      Modified: 2021-10-15 (02:37:02)
 #
 #           iRC: wuseman (Libera/EFnet/LinkNet) 
 #       Website: https://www.nr1.nu/
@@ -43,6 +43,13 @@
 #
 # - End of Header -------------------------------------------------------------
 
+# HowTo
+# 
+# adb shell
+# su
+# vi /data/data/com.termux/files/home/bin/termux-shell.sh
+# Add below lines into: /data/data/com.termux/files/home/bin/termux-shell.sh
+
 export PREFIX='/data/data/com.termux/files/usr'
 export HOME='/data/data/com.termux/files/home'
 export LD_LIBRARY_PATH='/data/data/com.termux/files/usr/lib'
@@ -51,3 +58,8 @@ export LANG='en_US.UTF-8'
 export SHELL='/data/data/com.termux/files/usr/bin/bash'
 cd "$HOME"
 exec "$SHELL" -l
+# Close and save: 
+# chmod +x /data/data/com.termux/files/home/bin/termux-shell.sh
+# Enter termux shell:
+# sh /data/data/com.termux/files/home/bin/termux-shell.sh
+# Done
