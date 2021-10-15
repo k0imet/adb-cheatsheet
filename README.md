@@ -19,6 +19,12 @@ All commands that require root will have (Root_Required) in descriptionn. Now we
 
      https://wuseman.nr1.nu/configs/notifications_and_ringtones/
 
+# Android Stock Apk Files
+
+Pixel 4: 
+
+     https://wuseman.nr1.nu/configs/distfiles/android/google.pixel4_apks-2021-10-15.tar.gz
+
 # Android CODE
 
      https://cs.android.com/android/platform/superproject/
