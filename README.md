@@ -15,6 +15,10 @@ All commands that require root will have (Root_Required) in descriptionn. Now we
 * [Gentoo Wiki - ADB](https://wiki.gentoo.org/wiki/Android/adb)
 * [Stackoverflow - Bluetooth](https://stackoverflow.com/a/55064471)    
 
+# Android & iPhone ringtones / notfication sounds
+
+     https://wuseman.nr1.nu/configs/notifications_and_ringtones/
+
 # Android CODE
 
      https://cs.android.com/android/platform/superproject/
