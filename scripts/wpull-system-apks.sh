@@ -7,7 +7,7 @@
 #       Version: 1.0
 #
 #       Created: 2021-09-14 (18:51:48)
-#      Modified: 2021-09-26 (21:13:43)
+#      Modified: 2021-10-15 (02:22:31)
 #
 #           iRC: wuseman (Libera/EFnet/LinkNet) 
 #       Website: https://www.nr1.nu/
@@ -52,14 +52,14 @@ printf "%61s\n" | tr ' ' '='
 printf "Pulling applications installed from playstore..........[\e[0;33mWAIT\e[0m]\n"
 printf "%61s\n" | tr ' ' '='
 
-for package in $(adb shell pm list packages| tr -d '\r' | sed 's/package://g'); do
+for package in $(adb shell pm list packages -s| tr -d '\r' | sed 's/package://g'); do
     apk=$(adb shell pm path $package | tr -d '\r' | sed 's/package://g' | cut -d\/ -f4|cut -d- -f1)
     apk_real=$(adb shell pm path $package | tr -d '\r' | sed 's/package://g')
     printf "Pulling: $apk";
     adb pull -p $apk_real "$package".apk &> /dev/null
     printf "%s%s[\e[1;32mDONE\e[0m]\n" "${line:${#apk}}"
 done
-PCKS="$(adb shell pm list packages -3 | tr -d '\r' | sed 's/package://g' | wc -l)"
+PCKS="$(adb shell pm list packages -s| tr -d '\r' | sed 's/package://g' | wc -l)"
 printf "%61s\n" | tr ' ' '='
 printf "Pulled $PCKS apk packages from your device................[\e[1;32mDONE\e[0m]\n"
 printf "%61s\n" | tr ' ' '='
