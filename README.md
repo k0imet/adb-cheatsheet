@@ -800,23 +800,23 @@ Settings are sorted for root and user:
 
 Few of those examples is from : https://github.com/jfsso/PreferencesEditor
 
-# Add a value to default shared preferences.
+##### Add a value to default shared preferences.
 
     adb shell 'am broadcast -a org.example.app.sp.PUT --es key key_name --es value "hello world!"'
 
-# Remove a value to default shared preferences.
+##### Remove a value to default shared preferences.
 
     adb shell 'am broadcast -a org.example.app.sp.REMOVE --es key key_name'
 
-# Clear all default shared preferences.
+##### Clear all default shared preferences.
 
     adb shell 'am broadcast -a org.example.app.sp.CLEAR --es key key_name'
 
-# It's also possible to specify shared preferences file.
+##### It's also possible to specify shared preferences file.
 
     adb shell 'am broadcast -a org.example.app.sp.PUT --es name Game --es key level --ei value 10'
 
-# Data types
+##### Data types
 
     adb shell 'am broadcast -a org.example.app.sp.PUT --es key string --es value "hello world!"'
     adb shell 'am broadcast -a org.example.app.sp.PUT --es key boolean --ez value true'
@@ -824,7 +824,7 @@ Few of those examples is from : https://github.com/jfsso/PreferencesEditor
     adb shell 'am broadcast -a org.example.app.sp.PUT --es key int --ei value 2015'
     adb shell 'am broadcast -a org.example.app.sp.PUT --es key long --el value 9223372036854775807'
 
-# Restart application process after making changes
+##### Restart application process after making changes
 
     adb shell 'am broadcast -a org.example.app.sp.CLEAR --ez restart true'
 
@@ -931,9 +931,26 @@ Method 1
 
     service call iphonesubinfo 1| cut -d "'" -f2| grep -Eo '[0-9]'| xargs| sed 's/\ //g'  
 
-Method 1
+Method 2
    
     service call iphonesubinfo 3 i32 1 | grep -oE '[0-9a-f]{8} ' | while read hex; do echo -ne "\u${hex:4:4}\u${hex:0:4}"; done; echo          
+
+Method 3
+
+     echo "[device.imei]: [$(adb shell service call iphonesubinfo 1 | awk -F "'" '{print $2}' | sed '1 d'| tr -d '\n' | tr -d '.' | tr -d ' ')]"
+
+Method 4
+
+     adb shell service call iphonesubinfo 1 | awk -F"'" 'NR>1 { gsub(/\./,"",$2); imei=imei $2 } END {print imei}' 
+
+Method 5 
+
+     adb shell "service call iphonesubinfo 1 | cut -c 52-66 | tr -d '.[:space:]'"
+
+## N/A
+## adb shell service call iphonesubinfo 1 | awk -F "'" '{print }' | sed '1 d' | tr -d '.' | awk '{print}' ORS=
+
+
 
 ###### Imei Card Slot 2: 
        
@@ -1328,3 +1345,6 @@ There is to much to describe here, get info by type getprop, but you can for exa
     https://github.com/wuseman/ && https://nr1.nu && https://stackoverflow.com/users/9887151/wuseman
 
 ###### END!
+
+
+https://usmile.at/blog/how-to-change-imei-on-android-devices
