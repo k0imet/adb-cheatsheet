@@ -1,8 +1,10 @@
-# Feel free to help
+<p align="center">
+  <img width="120px" src="https://www.giggles4kids.co.uk/wp-content/uploads/2017/03/Android-Icon.png" />
+  <h1 align="center"># Android Debug Bridge (adb)</h1>
+  <h2 align="center">Probably the largest README online for mastering your android device via cli</h2>
+</p>
 
-<p> If you are good at writing READMEs feel free to build this repo with some more stylish and with a better layout for various commands, would be appreciated, however, i spent alot of time for this wiki and there is much more to be added, android via cli pwnz! This readme are OK I guess but it would be better if it's  awesome ;) Alot of small fixes and such must be done and i really don't have the time for this atm and Android 12 is here with new stuff to learn
-
-# Android Debug Bridge (adb)
+## About 
 
 Time flies, it's about time to get up new commands for our Android devices since there is really much stuff that is being added,updated and removed for our devices, I havent seen all those new commands anywere so hopefully this will be useful for you guys aswell.
 
@@ -15,31 +17,30 @@ All commands that require root will have (Root_Required) in descriptionn. Now we
 * [Gentoo Wiki - ADB](https://wiki.gentoo.org/wiki/Android/adb)
 * [Stackoverflow - Bluetooth](https://stackoverflow.com/a/55064471)    
 
-# Android & iPhone ringtones / notfication sounds
+## Android & iPhone ringtones / notfication sounds
 
      https://wuseman.nr1.nu/configs/notifications_and_ringtones/
 
-# Android Stock Apk Files
+## Android Stock Apk Files
 
 Pixel 4: 
 
      https://wuseman.nr1.nu/configs/distfiles/android/google.pixel4_apks-2021-10-15.tar.gz
 
-# Android CODE
+## Android CODE
 
      https://cs.android.com/android/platform/superproject/
 
-# Android Downloads
+## Android Downloads
 
      https://source.android.com/compatibility/cts/downloads
 
-# Android Issue Tracker
+## Android Issue Tracker
 
       https://code.google.com/p/android/issues/entry
 
-# Getting Started
-
-  
+## Getting Started
+ 
 ![#2487AF](https://via.placeholder.com/15/2487AF/000000?text=+) How to setup ADB on Windows 10
 
     1: Download: https://dl.google.com/android/repository/platform-tools-latest-windows.zip
@@ -89,15 +90,14 @@ Pixel 4:
 
 ![#9B59B6](https://via.placeholder.com/15/9B59B6/000000?text=+) How to setup ADB on GNU/Linux Gentoo  
 
-    emerge --ask dev-util/android-sdk-update-manager
+     emerge --ask dev-util/android-sdk-update-manager
 
 ![#D64613](https://via.placeholder.com/15/D64613/000000?text=+) How to setup ADB on Debian/Ubuntu
 
-    apt install adb fastboot -yuu
+    apt install adb fastboot -y
 
-
-# CLI Commands
-    
+## ADB
+ 
 ##### Start ADB server:
 
     adb start-server 
@@ -205,12 +205,8 @@ Pixel 4:
 ##### Pull all files inside a folder to a path (Transfer all files in a folder FROM device > pc)
 
     adb pull /storage/on/device/ /path/on/pc # Notice the trial slash
-    
-# ADB package manager 
 
-I see many people using pm still in 2021 for this, use cmd since it's __alot__ faster then pm for handle what it is supposed to
-
-##### CMD
+## CMD
 
 ##### Equivalent to receiving the TelephonyManager.ACTION_EMERGENCY_CALL_STATE_CHANGED broadcast.
 
@@ -392,8 +388,8 @@ Sets whether network requests from the app is approved or not.
     cmd -w wifi set-wifi-watchdog enabled|disabled
 
 ##### Sets country code to <two-letter code> or left for normal value
-    cmd -w wifi force-country-code enabled <two-letter code> | disabled 
 
+     cmd -w wifi force-country-code enabled <two-letter code> | disabled 
 
 ##### Sets whether soft AP channel is forced to <int> MHz
 
@@ -432,9 +428,11 @@ Sets whether network requests from the app is approved or not.
     cmd package list packages -l                                          
 
 ##### List disabled packages
+     
     cmd package list packages -d
     
 ##### Filter to only show enabled packages     
+     
     cmd package list packages -e                                       
 
 ##### Filter to only show third party packages    
@@ -455,7 +453,7 @@ Sets whether network requests from the app is approved or not.
     priority=0 preferredOrder=0 match=0x108000 specificIndex=-1 isDefault=false
     com.facebook.katana/.LoginActivity
 
-##### PM 
+## PM 
 
 ##### List all packages installed on device 
 
@@ -519,7 +517,7 @@ Sets whether network requests from the app is approved or not.
 
     pm reset-permissions -p your.app.package
     
-# LOGCAT
+## LOGCAT
 
 ##### Default options: 
 
@@ -591,9 +589,8 @@ Sets whether network requests from the app is approved or not.
 ## Run all at once, no reason for use it like this really
 
 adb logcat -v brief -v long -v process -v raw -v tag -v thread -v threadtime -v time -v color       
-                                                                                                                        ## ------->  Orange: WARNING
-
-# DUMPSYS
+     
+## DUMPSYS
 
 ##### List all active services:
 
@@ -623,16 +620,6 @@ adb logcat -v brief -v long -v process -v raw -v tag -v thread -v threadtime -v 
       SatsService
       SecExternalDisplayService
       ...................
-
-##### Examples:
-
-###### Tips:
-
-If you want all services sorted by filename use below shell code:
-
-    for i in $(cat 1);do
-      adb shell dumpsys "$i" > "$i.txt";
-    done
 
 ###### Dumpsys lock_settings 
 
@@ -671,7 +658,6 @@ If you want all services sorted by filename use below shell code:
     mPendingRebootEscrowKey is not set
   
      Event log:
-
 
 ##### Print codecs for bluetooth headphones:
 
@@ -786,8 +772,20 @@ Settings are sorted for root and user:
      84,563K: logd (pid 3203)
      80,944K: com.google.android.talk (pid 32314 / activities)
      79,754K: com.google.android.googlequicksearchbox:search 
-     
-# DUMPSTATE
+
+##### Unplug AC:
+
+    dumpsys battery unplug
+
+##### See current used app:
+
+    dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp'|grep '/'|awk -F'u0' '{print $2}'|awk '{print $1}'
+
+##### Print how many notifications you have: 
+
+    dumpsys notification | grep NotificationRecord | wc -l 
+
+## DUMPSTATE
 
 ##### Dump info about your sim provider and kernel bootloader ID etc.
 
@@ -809,7 +807,7 @@ Settings are sorted for root and user:
     Dumpstate info: id=0 pid=26940 dry_run=0 args=dumpstate -v extra_options=
 
      
-# AM
+## AM
 
 Few of those examples is from : https://github.com/jfsso/PreferencesEditor
 
@@ -828,6 +826,10 @@ Few of those examples is from : https://github.com/jfsso/PreferencesEditor
 ##### It's also possible to specify shared preferences file.
 
     adb shell 'am broadcast -a org.example.app.sp.PUT --es name Game --es key level --ei value 10'
+
+##### Play a mp3 track on device
+
+    am start -a android.intent.action.VIEW -d file:////storage/9A8A-1069/wuseman/ringtones/<mp3_track>.mp3 -t audio/mp3    
 
 ##### Data types
 
@@ -920,59 +922,8 @@ Few of those examples is from : https://github.com/jfsso/PreferencesEditor
 
 ###### There is several ways to send a SMS via AM, here is just one of several ways:
 
-    aam broadcast -a com.whereismywifeserver.intent.TEST --es sms_body "test from adb"
-   
-###### Demo Call   
+    am broadcast -a com.whereismywifeserver.intent.TEST --es sms_body "test from adb"
 
-Establishes a fake Bluetooth connection to Dialer and must be called first to enable access to all call-related commands.
-
-    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "connect"                               ## To connect a device
-    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "addCall" --es "id" "4085524874"        ## Place an outgoing call
-    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "rcvCall" --es "id" "4085524874"        ## Receive an incoming call
-    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "endCall" --es "id" "4085524874"        ## End a call
-    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "holdCall"                              ## Hold the current call
-    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "unholdCall"                            ## Unhold the current call
-    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "unholdCall"                            ## Merge calls
-    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "clearAll"                              ## Clear all calls, To remove all calls in the call list:
-   
-
-# Print IMEI:
-
-##### Print Imei Card Slot 1: 
-
-Method 1
-
-    service call iphonesubinfo 1| cut -d "'" -f2| grep -Eo '[0-9]'| xargs| sed 's/\ //g'  
-
-Method 2
-   
-    service call iphonesubinfo 3 i32 1 | grep -oE '[0-9a-f]{8} ' | while read hex; do echo -ne "\u${hex:4:4}\u${hex:0:4}"; done; echo          
-
-Method 3
-
-     echo "[device.imei]: [$(adb shell service call iphonesubinfo 1 | awk -F "'" '{print $2}' | sed '1 d'| tr -d '\n' | tr -d '.' | tr -d ' ')]"
-
-Method 4
-
-     adb shell service call iphonesubinfo 1 | awk -F"'" 'NR>1 { gsub(/\./,"",$2); imei=imei $2 } END {print imei}' 
-
-Method 5 
-
-     adb shell "service call iphonesubinfo 1 | cut -c 52-66 | tr -d '.[:space:]'"
-
-## N/A
-## adb shell service call iphonesubinfo 1 | awk -F "'" '{print }' | sed '1 d' | tr -d '.' | awk '{print}' ORS=
-
-
-
-###### Imei Card Slot 2: 
-       
-    service call iphonesubinfo 3 i32 2 | grep -oE '[0-9a-f]{8} ' | while read hex; do echo -ne "\u${hex:4:4}\u${hex:0:4}"; done; echo       
-    
-##### List how many times we booted device:
-
-    settings list global|grep "boot_count="|cut -d= -f2|head -n 1|xargs echo "Booted:"|sed 's/$/ times/g'
-    
 ##### Send SMS:
 
     am broadcast -a com.whereismywifeserver.intent.TEST --es sms_body "test from adb"
@@ -996,10 +947,76 @@ Method 5
 
 ##### There is several ways to send a SMS via AM, here is one example:
 
-    aam broadcast -a com.whereismywifeserver.intent.TEST --es sms_body "test from adb"
+    am broadcast -a com.whereismywifeserver.intent.TEST --es sms_body "test from adb"
 
+##### Open settings for a specifik app
 
-# Content
+    am start -a android.settings.APPLICATION_DETAILS_SETTINGS package:<com.package.example>
+
+##### Add a contact
+
+## Example 1:
+
+    am start -a android.intent.action.INSERT -t vnd.android.cursor.dir/contact -e name "$(dialog --stdout --inputbox 'wuseman' 0 0)" -e postal "$(dialog --stdout --inputbox 'Postal Address' 0 0)" -e phone "$(dialog --stdout --inputbox 'Phone Number' 0 0)" -e email "$(dialog --stdout --inputbox 'Email' 0 0)"
+    
+## Example 2: 
+
+    am start -a android.intent.action.INSERT -t vnd.android.cursor.dir/contact -e name 'wuseman' -e phone <phone_number>
+
+##### Open Projectmenu (Huawei only)
+
+    am start com.huawei.android.projectmenu/com.huawei.android.projectmenu.ProjectMenuActivity
+
+###### Make Demo Call   
+
+Establishes a fake Bluetooth connection to Dialer and must be called first to enable access to all call-related commands.
+
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "connect"                               ## To connect a device
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "addCall" --es "id" "4085524874"        ## Place an outgoing call
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "rcvCall" --es "id" "4085524874"        ## Receive an incoming call
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "endCall" --es "id" "4085524874"        ## End a call
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "holdCall"                              ## Hold the current call
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "unholdCall"                            ## Unhold the current call
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "unholdCall"                            ## Merge calls
+    adb shell am broadcast -a com.android.car.dialer.intent.action.adb --es "action" "clearAll"                              ## Clear all calls, To remove all calls in the call list:
+   
+## IMEI:
+
+##### Print Imei Card Slot 1: 
+
+Method 1
+
+    service call iphonesubinfo 1| cut -d "'" -f2| grep -Eo '[0-9]'| xargs| sed 's/\ //g'  
+
+Method 2
+   
+    service call iphonesubinfo 3 i32 1 | grep -oE '[0-9a-f]{8} ' | while read hex; do echo -ne "\u${hex:4:4}\u${hex:0:4}"; done; echo          
+
+Method 3
+
+     echo "[device.imei]: [$(adb shell service call iphonesubinfo 1 | awk -F "'" '{print $2}' | sed '1 d'| tr -d '\n' | tr -d '.' | tr -d ' ')]"
+
+Method 4
+
+     adb shell service call iphonesubinfo 1 | awk -F"'" 'NR>1 { gsub(/\./,"",$2); imei=imei $2 } END {print imei}' 
+
+Method 5 
+
+     adb shell "service call iphonesubinfo 1 | cut -c 52-66 | tr -d '.[:space:]'"
+
+Method 6
+     
+     adb shell service call iphonesubinfo 1 | awk -F "'" '{print }' | sed '1 d' | tr -d '.' | awk '{print}' ORS=
+
+###### Imei Card Slot 2: 
+       
+    service call iphonesubinfo 3 i32 2 | grep -oE '[0-9a-f]{8} ' | while read hex; do echo -ne "\u${hex:4:4}\u${hex:0:4}"; done; echo       
+    
+##### List how many times we booted device:
+
+    settings list global|grep "boot_count="|cut -d= -f2|head -n 1|xargs echo "Booted:"|sed 's/$/ times/g'
+    
+## Content
 
 ###### Main stuff: 
 
@@ -1056,7 +1073,6 @@ Method 5
 
     adb shell content query --uri content://call_log/calls
 
-
 ##### Print various SMS stuff: 
 
     adb shell content query --uri content://sms/conversations
@@ -1078,27 +1094,6 @@ Method 5
     adb shell content query --uri content://mms-sms/locked
     adb shell content query --uri content://mms-sms/search
 
-
-# GETPROP
-
-There is to much to describe here, get info by type getprop, but you can for example grep various stuff by:
-
-    getprop | grep "model\|version.sdk\|manufacturer\|hardware\|platform\|revision\|serialno\|product.name\|brand"
-
-# MiSC
-
-##### Try vibrator
- 
-    echo 200 > /sys/class/timed_output/vibrator/enable
-
-##### Open settings for a specifik app
-
-    am start -a android.settings.APPLICATION_DETAILS_SETTINGS package:<com.package.example>
-
-##### Adopting USB-Drive
- 
-    sm set-force-adoptable true
-
 ##### Auto rotation on
 
     content insert –uri content://settings/system –bind name:s:accelerometer_rotation –bind value:i:1
@@ -1115,15 +1110,19 @@ There is to much to describe here, get info by type getprop, but you can for exa
 
      content insert –uri content://settings/system –bind name:s:user_rotation –bind value:i:0
 
-##### Genereate hash from keystore  -Typically used in Facebook
+## Input
+     
+##### Simulate a swipe down for notifications:
 
-    keytool -exportcert -alias your_alias -keystore debug.keystore | openssl sha1 -binary | openssl base64 
+    input swipe 0 0 0 300 
+    
+##### Swipe and unlock screen:
 
-##### Typically used in Google Maps
+    input swipe 300 1000 300 500 
 
-    keytool -list -v -keystore ~/.android/debug.keystore -alias your_alia           
-
-##### Print Screen Size
+## WM
+     
+##### Print Screen Resolution
 
     wm size
 
@@ -1134,24 +1133,30 @@ There is to much to describe here, get info by type getprop, but you can for exa
 ##### Set Overscan:
 
     wm overscan 0,0,0,200
+     
+## GETPROP
 
-##### Tips & Tricks
+There is to much to describe here, get info by type getprop, but you can for example grep various stuff by:
 
-##### See current used app:
+    getprop | grep "model\|version.sdk\|manufacturer\|hardware\|platform\|revision\|serialno\|product.name\|brand"
 
-    dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp'|grep '/'|awk -F'u0' '{print $2}'|awk '{print $1}'
+## MiSC
 
-##### Print how many notifications you have: 
+##### Try vibrator
+ 
+    echo 200 > /sys/class/timed_output/vibrator/enable
 
-    dumpsys notification | grep NotificationRecord | wc -l 
+##### Adopting USB-Drive
+ 
+    sm set-force-adoptable true
 
-##### Simulate a swipe down for notifications:
+##### Genereate hash from keystore  -Typically used in Facebook
 
-    input swipe 0 0 0 300 
-    
-##### Swipe and unlock screen:
+    keytool -exportcert -alias your_alias -keystore debug.keystore | openssl sha1 -binary | openssl base64 
 
-    input swipe 300 1000 300 500 
+##### Typically used in Google Maps
+
+    keytool -list -v -keystore ~/.android/debug.keystore -alias your_alias           
     
 ##### Test any app by pressing 10000 times at once, this will start your application and perform 10000 random events.# 
 
@@ -1174,11 +1179,40 @@ There is to much to describe here, get info by type getprop, but you can for exa
     com.google.android.apps.docs.editors.slides/com.google.android.apps.docs.app.NewMainProxyActivity
     com.android.vending/.AssetBrowserActivity
     .....
-    
-##### Open Projectmenu (Huawei only)
 
-    am start com.huawei.android.projectmenu/com.huawei.android.projectmenu.ProjectMenuActivity
+## Sqlite3 
 
+###### Read SIM card data
+
+    sqlite3 -line /data/user_de/0/com.android.providers.telephony/databases/telephony.db 'select icc_id,card_id,carrier_name,display_name,mcc,mnc from siminfo'
+
+      icc_id = 8946209802SSSSSSSSS
+     card_id = 8946209802SSSSSSSSS
+    carrier_name = 
+    display_name = CARD
+         mcc = 0
+         mnc = 0
+
+      icc_id = 8946209802SSSSSSSSS
+     card_id = 8946209802SSSSSSSSS
+    carrier_name = Telia
+    display_name = Telia
+         mcc = 240
+         mnc = 7
+
+
+     
+##### Read ICCID
+
+    sqlite3 /data/vendor/radio/qcril.db 'select ICCID from qcril_manual_prov_table'
+
+##### Read .db files, clean:
+
+    grep -vx -f <(sqlite3 Main.db .dump) <(sqlite3 ${DB} .schema) 
+
+     
+## Setprop
+     
 ##### Auto answer any call after 2 seconds:
 
     setprop persist.sys.tel.autoanswer.ms 2000
@@ -1187,25 +1221,7 @@ There is to much to describe here, get info by type getprop, but you can for exa
  
     setprop persist.sys.tel.autoanswer.ms 0
 
-##### Unplug AC:
-
-    dumpsys battery unplug
-
-##### Print uptime for your device by days + time
-
-    TZ=UTC date -d@$(cut -d\  -f1 /proc/uptime) +'%j %T' | awk '{print $1-1"d",$2}'
-
-##### Add a contact
-
-## Example 1:
-
-    am start -a android.intent.action.INSERT -t vnd.android.cursor.dir/contact -e name "$(dialog --stdout --inputbox 'wuseman' 0 0)" -e postal "$(dialog --stdout --inputbox 'Postal Address' 0 0)" -e phone "$(dialog --stdout --inputbox 'Phone Number' 0 0)" -e email "$(dialog --stdout --inputbox 'Email' 0 0)"
-    
-## Example 2: 
-
-    am start -a android.intent.action.INSERT -t vnd.android.cursor.dir/contact -e name 'wuseman' -e phone <phone_number>
-
-# GETPROP
+## Getprop
 
 ##### Is OEM unlocking enable or not
 
@@ -1218,30 +1234,30 @@ There is to much to describe here, get info by type getprop, but you can for exa
  
       getprop sys.boot_completed
 
-# Streaming
-
-##### Play a mp3 track on device
-
-    am start -a android.intent.action.VIEW -d file:////storage/9A8A-1069/wuseman/ringtones/<mp3_track>.mp3 -t audio/mp3
 
 ##### Print USB Mode (Charging only, MTP ... )
 
-    cat /sys/devices/soc0/hw_platform'
-    
-# Important Files / Folders
+   cat /sys/devices/soc0/hw_platform'
 
-###### SMS Is stored in:
+##### Print uptime for your device by days + time
+
+    TZ=UTC date -d@$(cut -d\  -f1 /proc/uptime) +'%j %T' | awk '{print $1-1"d",$2}'
+
+
+## Files/Folders
+
+###### SMS will be found in:
   
     /data/user_de/0/com.android.providers.telephony/databases/mmssms.db
     /data/user_de/0/com.android.providers.telephony/databases/telephony.db
 
-# Sounds
+## System Stock Sounds
 
     /system/media/audio/ui/                       
     /system/media/audio/ringtones
     /system/media/audio/notifications
 
-# Paths
+## Paths
 
     /data/ssh
     /data/adb/magisk
@@ -1255,7 +1271,7 @@ There is to much to describe here, get info by type getprop, but you can for exa
     /mmt/adcard/external_sd (external SD Card)
      rm /data/misc/bootstat/boot_complete?
 
-# Rooted Devices:
+## Rooted Devices:
 
 ##### Is device rooted:
 
@@ -1286,32 +1302,7 @@ Now change permissions on dg.db to 0444
      chmod 0444 /data/data/com.google.android.gms/databases/dg.db
 
 Clear cache for your Google Pay application and have fun! :)
-     
-###### Read SIM card data
 
-    flame:/ # sqlite3 -line /data/user_de/0/com.android.providers.telephony/databases/telephony.db 'select icc_id,card_id,carrier_name,display_name,mcc,mnc from siminfo'
-
-      icc_id = 8946209802SSSSSSSSS
-     card_id = 8946209802SSSSSSSSS
-    carrier_name = 
-    display_name = CARD
-         mcc = 0
-         mnc = 0
-
-      icc_id = 8946209802SSSSSSSSS
-     card_id = 8946209802SSSSSSSSS
-    carrier_name = Telia
-    display_name = Telia
-         mcc = 240
-         mnc = 7
-
-##### Read ICCID
-
-    sqlite3 /data/vendor/radio/qcril.db 'select ICCID from qcril_manual_prov_table'
-
-##### Read .db files, clean:
-
-    grep -vx -f <(sqlite3 Main.db .dump) <(sqlite3 ${DB} .schema) 
 
 ##### Sniff traffic via wireshark:
 
@@ -1323,9 +1314,7 @@ Clear cache for your Google Pay application and have fun! :)
        mkdir -p ".`dirname $i`";adb shell "su -c cat $i" > ".$i";
     done
 
-
-
-# Magisk 
+## Magisk 
 
 ##### Enable magiskhide
 
@@ -1339,15 +1328,14 @@ Clear cache for your Google Pay application and have fun! :)
 
      /sbin/magisk magiskhide add com.package
     
-    
-# Samsung Stuff:
+## Samsung Specifik:
 
-###### Bypass Samsung Health block on rooted devices: 
+###### Bypass Samsung Health block on rooted samsung devices
 
      mount -o rw,remount /system/etc/mkshrc
      sed -i 's/ro.config.tima=1/ro.config.tima=0/g' build.prop
 
-# References
+## References
 
     http://tjtech.me/analyze-oem-unlocking-under-android.html
     https://mazhuang.org/awesome-adb/README.en.html
@@ -1368,22 +1356,19 @@ Clear cache for your Google Pay application and have fun! :)
     https://source.android.com/devices/tech/debug/understanding-logging
     https://source.android.com/devices/tech/connect/connect_tests
     https://adbshell.com/commands/adb-install
+    https://usmile.at/blog/how-to-change-imei-on-android-devices
 
-###### REQUIREMENTS
+## Author of this README: 
 
-    Access to a shell via PC, all commands wont work via adb on your android device.
+Just another wannabe hacker - Known as **wuseman <wuseman@nr1.nu\>** in public
 
-###### CONTACT 
+## License
 
-    If you have problems, questions, ideas or suggestions please contact me by posting to wuseman@nr1.nu
+All stuff in this reoo is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details
 
-###### WEB SITE
+If you have problems, questions, ideas or suggestions please contact me on *_wuseman@nr1.nu_  - For faster contact visit Libera irc network or the webchat and type '/msg wuseman hi!' in the input bar and I will reply to you ASAP.
+  
+ Enter Libera's network via your own client 'chat.libera.chat:+6697 or use their new web client [here](https://web.libera.chat/).
 
-    Visit my websites and profiles for the latest info and updated tools
+### To be continued. 
 
-    https://github.com/wuseman/ && https://nr1.nu && https://stackoverflow.com/users/9887151/wuseman
-
-###### END!
-
-
-https://usmile.at/blog/how-to-change-imei-on-android-devices
