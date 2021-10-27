@@ -207,6 +207,10 @@ Pixel 4:
     adb pull /storage/on/device/ /path/on/pc # Notice the trial slash
 
 ## CMD
+  
+###### Print auth user
+  
+    cmd user list   
 
 ##### Enable night mode (Dark Mode) 
   
@@ -1216,8 +1220,6 @@ There is to much to describe here, get info by type getprop, but you can for exa
          mcc = 240
          mnc = 7
 
-
-     
 ##### Read ICCID
 
     sqlite3 /data/vendor/radio/qcril.db 'select ICCID from qcril_manual_prov_table'
@@ -1225,7 +1227,6 @@ There is to much to describe here, get info by type getprop, but you can for exa
 ##### Read .db files, clean:
 
     grep -vx -f <(sqlite3 Main.db .dump) <(sqlite3 ${DB} .schema) 
-
      
 ## Setprop
      
