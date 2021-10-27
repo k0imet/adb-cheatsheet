@@ -208,6 +208,22 @@ Pixel 4:
 
 ## CMD
 
+##### Enable night mode (Dark Mode) 
+  
+    cmd uimode night yes 
+
+##### Disable night mode
+  
+    cmd uimode night no
+
+ ##### Enable car (car Mode) 
+  
+    cmd uimode car yes
+  
+##### Disable car (car Mode) 
+  
+    cmd uimode car no
+  
 ##### Equivalent to receiving the TelephonyManager.ACTION_EMERGENCY_CALL_STATE_CHANGED broadcast.
 
 Sets whether we are in the middle of an emergency call.
