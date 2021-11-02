@@ -1352,6 +1352,14 @@ Clear cache for your Google Pay application and have fun! :)
      mount -o rw,remount /system/etc/mkshrc
      sed -i 's/ro.config.tima=1/ro.config.tima=0/g' build.prop
 
+## Screen capture
+  
+     screencap /storage/emulated/0/Pictures/screenshot.png
+  
+## Screen record
+  
+    screenrecord --time-limit 10 /storage/emulated/0/Video/record.mp4
+  
 ## References
 
     http://tjtech.me/analyze-oem-unlocking-under-android.html
