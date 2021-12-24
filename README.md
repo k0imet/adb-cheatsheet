@@ -213,7 +213,27 @@ Pixel 4:
     adb exec-out screenrecord --output-format=h264 - |    ffplay -framerate 60 -probesize 32 -sync video  -
 
 ## CMD
+  
+###### Print auth user
+  
+    cmd user list   
 
+##### Enable night mode (Dark Mode) 
+  
+    cmd uimode night yes 
+
+##### Disable night mode
+  
+    cmd uimode night no
+
+ ##### Enable car (car Mode) 
+  
+    cmd uimode car yes
+  
+##### Disable car (car Mode) 
+  
+    cmd uimode car no
+  
 ##### Equivalent to receiving the TelephonyManager.ACTION_EMERGENCY_CALL_STATE_CHANGED broadcast.
 
 Sets whether we are in the middle of an emergency call.
@@ -1206,8 +1226,6 @@ There is to much to describe here, get info by type getprop, but you can for exa
          mcc = 240
          mnc = 7
 
-
-     
 ##### Read ICCID
 
     sqlite3 /data/vendor/radio/qcril.db 'select ICCID from qcril_manual_prov_table'
@@ -1215,7 +1233,6 @@ There is to much to describe here, get info by type getprop, but you can for exa
 ##### Read .db files, clean:
 
     grep -vx -f <(sqlite3 Main.db .dump) <(sqlite3 ${DB} .schema) 
-
      
 ## Setprop
      
@@ -1341,6 +1358,14 @@ Clear cache for your Google Pay application and have fun! :)
      mount -o rw,remount /system/etc/mkshrc
      sed -i 's/ro.config.tima=1/ro.config.tima=0/g' build.prop
 
+## Screen capture
+  
+     screencap /storage/emulated/0/Pictures/screenshot.png
+  
+## Screen record
+  
+    screenrecord --time-limit 10 /storage/emulated/0/Video/record.mp4
+  
 ## References
 
     http://tjtech.me/analyze-oem-unlocking-under-android.html
