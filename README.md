@@ -206,6 +206,12 @@ Pixel 4:
 
     adb pull /storage/on/device/ /path/on/pc # Notice the trial slash
 
+## Exec-out ( Stream monitor via shell)
+
+![Screenshot](https://nr1.nu/u/adb_record.gif)
+
+    adb exec-out screenrecord --output-format=h264 - |    ffplay -framerate 60 -probesize 32 -sync video  -
+
 ## CMD
 
 ##### Equivalent to receiving the TelephonyManager.ACTION_EMERGENCY_CALL_STATE_CHANGED broadcast.
