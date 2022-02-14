@@ -12,7 +12,11 @@ I decided to not add 'adb shell <coommands>' wich means all commands is executed
 
 All commands that require root will have (Root_Required) in descriptionn. 
 
-- Now we are ready to start, hey ho, let's go :)
+## Websites linked to this Repository
+
+* [Android™ Debug Bridge - Main](https://android.nr1.nu)
+* [Android™ Debug Bridge - Nr1](https://www.nr1.nu/wikis/adb-cheatsheet/)
+* [Android™ Debug Bridge - Wiki](https://github.com/wuseman/adb-cheatsheet/wiki/Android%E2%84%A2-Debug-Bridge-(adb))
 
 ## Android™ <small>Resources</small>
 
@@ -22,15 +26,15 @@ All commands that require root will have (Root_Required) in descriptionn.
 
 #### Android™ Stock Apk <small>Files</small>
 
-* [Google Pixel 4 - Stock APS's](https://www.nr1.nu/archive/distfiles/android/stock_apks)
+* [Android™ - Stock APKS's](https://www.nr1.nu/archive/distfiles/android/stock_apks)
 
 #### Android™ FRP Bypass <small>Files</small>
 
-* [Google Pixel 4 - Stock APK's](https://www.nr1.nu/archive/archive/distfiles/android/frp.bypass-apks/)
+* [Android™ - APK's FRP Bypassing](https://www.nr1.nu/archive/archive/distfiles/android/frp.bypass-apks/)
 
 #### Android™ Root <small>Files</small>
 
-* [Google Pixel 4 - Stock APS's](https://www.nr1.nu/archive/distfiles/android/root.files/)
+* [Android™ - Root Files](https://www.nr1.nu/archive/distfiles/android/root.files/)
 
 #### Android™ <small>Source Code</small>
 
