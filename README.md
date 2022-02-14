@@ -1593,7 +1593,7 @@ rm /data/misc/bootstat/boot_complete?
 
 #### Nr1 / wuseman 
 
-* [Nr1 - Master your android device via ADB](https://android.nr1.nu) 
+* [Nr1 - Your journey to master Android™ Shell begins here](https://android.nr1.nu) 
 * [wuseman - ADB Cheatsheet](https://github.com/wuseman/adb-cheatsheet)
 * [Stackoverflow - Bluetooth](https://stackoverflow.com/a/55064471) 
 
