@@ -22,7 +22,7 @@ All commands that require root will have (Root_Required) in descriptionn.
 
 #### Android™ Stock Apk <small>Files</small>
 
-* [Google Pixel 4 - Stock APS's](https://www.nr1.nu/archive/distfiles/android/google.pixel.4-stock_apks)
+* [Google Pixel 4 - Stock APS's](https://www.nr1.nu/archive/distfiles/android/stock_apks)
 
 #### Android™ FRP Bypass <small>Files</small>
 
