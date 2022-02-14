@@ -18,11 +18,19 @@ All commands that require root will have (Root_Required) in descriptionn.
 
 #### Android <small>Sounds</small>
 
-* [Android™ and iPhone Archive]([https://www.nr1.nu/archive/notifications_and_ringtones/)
+* [Android™ and iPhone Archive](https://www.nr1.nu/archive/notifications_and_ringtones/)
 
 #### Android™ Stock Apk <small>Files</small>
 
-* [Google Pixel 4 - Stock APS's](https://www.nr1.nu/configs/distfiles/android/google.pixel4_apks-2021-10-15.tar.gz)
+* [Google Pixel 4 - Stock APS's](https://www.nr1.nu/archive/distfiles/android/google.pixel.4-stock_apks)
+
+#### Android™ FRP Bypass <small>Files</small>
+
+* [Google Pixel 4 - Stock APS's](https://www.nr1.nu/archive/archive/distfiles/android/frp.bypass-apks/)
+
+#### Android™ Root <small>Files</small>
+
+* [Google Pixel 4 - Stock APS's](https://www.nr1.nu/archive/distfiles/android/root.files/)
 
 #### Android™ <small>Source Code</small>
 
@@ -34,6 +42,12 @@ All commands that require root will have (Root_Required) in descriptionn.
 
 ## ADB <strong>install</strong>
  
+#### Source Files
+
+* [Download SDK Platform-Tools for Linux](https://dl.google.com/android/repository/pplatform-tools_r32.0.0-linux.zip)
+* [Download SDK Platform-Tools for MacOSX](https://dl.google.com/android/repository/pplatform-tools_r32.0.0-darwin.zip)     
+* [Download SDK Platform-Tools for Windows](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)
+  
 #### MacOSX
 
     1. Download the Android SDK Platform Tools ZIP file for macOS.
@@ -49,7 +63,7 @@ All commands that require root will have (Root_Required) in descriptionn.
     9. Finally, re-enter the command from step #7. If everything was successful, 
        you should now see your device’s serial number in macOS’s Terminal window.
 
-#### GNU/Linux
+#### Linux
 
     1. Download the Android SDK Platform Tools ZIP file for Linux.
     2. Extract the ZIP to an easily-accessible location (like the Desktop for example).
@@ -79,15 +93,22 @@ All commands that require root will have (Root_Required) in descriptionn.
     8: Finally, re-enter the command from step #6. If everything was successful,
        you should now see your device’s serial number in the command prompt (or the PowerShell window).
 
-#### GNU/Linux Gentoo  
+#### Arch Linux
+  
+    pacman -S android-tools
+
+#### Gentoo  
 
      emerge --ask dev-util/android-sdk-update-manager
+
+#### Fedora
+
+    dnf install adb
 
 #### Ubuntu
 
     apt install adb fastboot -y
-
-
+    
 ## Android™ <small>files</small>
 
 #### SMS and Phone Phone logs is stored in below files
@@ -195,6 +216,14 @@ adb pull = tansfer a file: device > pc
 
     adb pull /storage/on/device /path/on/pc
 
+#### Pull installed apk files 
+
+* [All Install Apks](https://www.nr1.nu/archive/scripts/android/pull_all_apks.sh)
+* [Factory Apks](https://www.nr1.nu/archive/scripts/android/pull_system_apks.sh)
+* [Pull Third Party Apks](https://www.nr1.nu/archive/scripts/android/pull_third-party_apks.sh)
+
+![Screenshot](previews/android-wpull-system-apks.gif)
+
 #### Pull all files inside a folder to a path (Transfer all files in a folder FROM device > pc)
 
     adb pull /storage/on/device/ /path/on/pc # Notice the trial slash
@@ -290,7 +319,7 @@ Sniff your device network and SMS traffic via Wireshark on your PC
 
 #### Set date
 
-   date MMDDYYYY.XX;am broadcast -a android.intent.action.TIME_SET
+    date MMDDYYYY.XX;am broadcast -a android.intent.action.TIME_SET
 
 ## ADB <small>cmd</small>
   
@@ -1075,11 +1104,7 @@ Dumpstate info: id=0 pid=26940 dry_run=0 args=dumpstate -v extra_options=
 
     am broadcast -a com.whereismywifeserver.intent.TEST --es sms_body "test from adb"
 
-#### Send SMS:
-
-    am broadcast -a com.whereismywifeserver.intent.TEST --es sms_body "test from adb"
-
-#### Simulate waking your app using the following commands:
+  #### Simulate waking your app using the following commands:
 
     am set-inactive <packageName> 
     am set-inactive <packageName> false
@@ -1192,8 +1217,10 @@ IMEI Related
 
 ### Slot 2
 
-Some devices has 2 sim card slots, for print the second simcards imei use below:
-       
+Some devices has 2 sim card slot, for print the second simcards imei use below:
+
+Print IMEI - Slot 2
+  
     service call iphonesubinfo 3 i32 2 | grep -oE '[0-9a-f]{8} ' | while read hex; do echo -ne "\u${hex:4:4}\u${hex:0:4}"; done; echo       
     
 ## ADB <small>settings</small>
