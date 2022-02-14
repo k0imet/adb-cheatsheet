@@ -26,7 +26,7 @@ All commands that require root will have (Root_Required) in descriptionn.
 
 #### Android™ FRP Bypass <small>Files</small>
 
-* [Google Pixel 4 - Stock APS's](https://www.nr1.nu/archive/archive/distfiles/android/frp.bypass-apks/)
+* [Google Pixel 4 - Stock APK's](https://www.nr1.nu/archive/archive/distfiles/android/frp.bypass-apks/)
 
 #### Android™ Root <small>Files</small>
 
