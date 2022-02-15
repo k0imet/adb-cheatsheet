@@ -4,6 +4,9 @@
   <h3 align="center">Your journey to master <i>Android™ Shell</i> begins here</h3>
 </p>
 
+<meta name="google-site-verification" content="AJ9fhKlhEB40NVXrrYm29Rf7lEiGzYdpwHRNVFIb7JU" />
+
+
 Time flies, it's about time to get up new commands for our Android devices since there is really much stuff that is being added,updated and removed for our devices, I havent seen all those new commands anywere so hopefully this will be useful for you guys aswell.
 
 Feel free to contribute to this repo if there is something that i forgot and is worth to know, however, let me show you what's new.
