@@ -1,11 +1,37 @@
-<p align="center">
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css?v=458eaa75266497c2ca1ce3438c8715ed481afb57">
+
+<meta name="theme-color" content="#151515">
+<meta name="msapplication-navbutton-color" content="#151515">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta title="Nr1 | Your journey to master Android™ Shell begins here" />
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Nr1 - Android™ Debug Bridge Wiki" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Your journey to master Android™ Shell begins here" />
+<meta property="og:description" content="Your journey to master Android™ Shell begins here" />
+<link rel="canonical" href="https://android.nr1.nu/" />
+<meta property="og:url" content="https://android.nr1.nu/" />
+<meta property="og:site_name" content="Nr1" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Nr1 - Android™ Debug Bridge Wiki" />
+<meta property="application/ld+json" />
+<meta name="google-site-verification" content="AJ9fhKlhEB40NVXrrYm29Rf7lEiGzYdpwHRNVFIb7JU" />
+    
+  </head>
+  <body>
+    <div class="container">
+      <section id="main_content">
+        <p align="center">
   <img width="120px" src="https://www.giggles4kids.co.uk/wp-content/uploads/2017/03/Android-Icon.png" />
   <h2 align="center"># Android™ Debug Bridge (adb)</h2>
   <h3 align="center">Your journey to master <i>Android™ Shell</i> begins here</h3>
 </p>
-
-<meta name="google-site-verification" content="AJ9fhKlhEB40NVXrrYm29Rf7lEiGzYdpwHRNVFIb7JU" />
-
 
 Time flies, it's about time to get up new commands for our Android devices since there is really much stuff that is being added,updated and removed for our devices, I havent seen all those new commands anywere so hopefully this will be useful for you guys aswell.
 
